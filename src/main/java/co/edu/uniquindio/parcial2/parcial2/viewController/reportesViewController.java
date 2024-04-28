@@ -14,7 +14,7 @@ import javafx.scene.layout.AnchorPane;
 
 /*
 * esto vale la plata
-* 
+*
 * */
 public class reportesViewController {
     ReportesController prestamoObjetoController;

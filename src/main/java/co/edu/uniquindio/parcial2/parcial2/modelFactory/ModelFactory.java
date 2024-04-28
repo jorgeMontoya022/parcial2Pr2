@@ -116,10 +116,16 @@ public class ModelFactory {
         objeto4.setNombreObjeto("Saxofón");
         objeto4.setIdObjeto("004");
 
+
+        Objeto objeto5 = new Objeto();
+        objeto5.setNombreObjeto("Bajo");
+        objeto5.setIdObjeto("005");
+
         prestamoUQ.getListaObjetos().add(objeto1);
         prestamoUQ.getListaObjetos().add(objeto2);
         prestamoUQ.getListaObjetos().add(objeto3);
         prestamoUQ.getListaObjetos().add(objeto4);
+        prestamoUQ.getListaObjetos().add(objeto5);
     }
 
     private void initPrestamos() {
