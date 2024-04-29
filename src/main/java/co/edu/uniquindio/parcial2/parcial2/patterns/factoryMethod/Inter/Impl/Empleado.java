@@ -1,8 +1,8 @@
 package co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.Impl;
 
-import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.IConexion;
+import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.ITrabajo;
 
-public abstract class Empleado implements IConexion {
+public abstract class Empleado implements ITrabajo {
     private String nombre;
     private String apellido;
     private String cedula;

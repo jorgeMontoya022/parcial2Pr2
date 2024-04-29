@@ -1,20 +1,20 @@
 package co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod;
 
-import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.ConexionVacia;
-import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.IConexion;
-import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.Impl.ConexionEmpleadoPermanente;
-import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.Impl.ConexionEmpleadoTemporal;
+import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.TrabajoVacio;
+import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.ITrabajo;
+import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.Impl.EmpleadoPermanente;
+import co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter.Impl.EmpleadoTemporal;
 
 public class ConexionFabrica {
-    public IConexion getConexion(String motor) {
+    public ITrabajo getConexion(String motor) {
         if (motor == null) {
-            return new ConexionVacia();
+            return new TrabajoVacio();
         }
         if (motor.equalsIgnoreCase("EMPPER")) {
-            return new ConexionEmpleadoPermanente();
+            return new EmpleadoPermanente();
         } else if (motor.equalsIgnoreCase("EMPTEM")) {
-            return new ConexionEmpleadoTemporal();
+            return new EmpleadoTemporal();
         }
-        return new ConexionVacia();
+        return new TrabajoVacio();
     }
 }

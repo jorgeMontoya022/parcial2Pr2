@@ -1,6 +1,6 @@
 package co.edu.uniquindio.parcial2.parcial2.patterns.factoryMethod.Inter;
 
-public class ConexionVacia implements IConexion {
+public class TrabajoVacio implements ITrabajo {
     @Override
     public void conectar() {
         System.out.println("No especifico empleado");
