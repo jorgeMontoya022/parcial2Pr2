@@ -1,5 +1,6 @@
 package co.edu.uniquindio.parcial2.parcial2.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -168,5 +169,103 @@ public class PrestamoUQ {
         return objetosNoDisponibles; // retorna los objetos no disponibles
     }
 
+    public String buscarClienteCedula(String cedula) {
+        for (Cliente cliente : getListaClientes()) {
+            if (cliente.getCedula().equalsIgnoreCase(cedula)) {
+                return cliente.toString();
+            }
+        }
+        return null;
+    }
+
+    public String obtenerObjetosMenosPrestados(String rango) {
+        String reporte = "";
+        int rangoEntero = Integer.parseInt(rango);
+        List<Objeto> objetoList = getListaObjetos();
+        for (Objeto objeto : objetoList) {
+            int contador = 0;
+            for (Prestamo prestamo : getListaPrestamos()) {
+                for (Objeto objetoPrestado : prestamo.getListaObjetosAsociados()) {
+                    if (objeto.getIdObjeto().equals(objetoPrestado.getIdObjeto())) {
+                        contador++;
+                    }
+                }
+            }
+            if (contador <= rangoEntero) {
+                reporte = reporte + objeto.toString() + "\n";
+            }
+        }
+        return reporte;
+
+    }
+
+    public String obtenerPrestamosFechaEspecifica(LocalDate fechaEspecifica) {
+        String reporte = "";
+        for (Prestamo prestamo : getListaPrestamos()) {
+            if (prestamo.getFechaPrestamo().equals(fechaEspecifica)) {
+                reporte += prestamo.toString() + "\n";
+            }
+        }
+        return reporte;
+
+    }
+
+    public String obtenerPrestamosEntreFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
+        String reporte = "";
+
+        for (Prestamo prestamo : getListaPrestamos()) {
+            if ((prestamo.getFechaPrestamo().isEqual(fechaInicial) || prestamo.getFechaPrestamo().isAfter(fechaInicial))
+                    && (prestamo.getFechaEntrega().isEqual(fechaFinal) || prestamo.getFechaEntrega().isBefore(fechaFinal))) {
+                reporte += prestamo.toString() + "\n";
+            }
+        }
+        return reporte;
+    }
+
+
+
+    public String obtenerPrestamosMenoresFecha(LocalDate fechaEspecifica) {
+        String reporte = "";
+        for (Prestamo prestamo : getListaPrestamos()) {
+            if (prestamo.getFechaPrestamo().isBefore(fechaEspecifica)) {
+                reporte += prestamo.toString() + "\n";
+            }
+        }
+        return reporte;
+
+    }
+
+    public String BuscarEmpleadosConMasPrestamos(String rango) {
+        String reporte = "";
+        int rangoEntero = Integer.parseInt(rango);
+        List<Empleado> todosLosEmpleados = new ArrayList<>();
+        List<Integer> contadorPrestamos = new ArrayList<>();
+
+        for (Prestamo prestamo : getListaPrestamos()) {
+            Empleado empleado = prestamo.getEmpleadoAsociado();
+            if (!todosLosEmpleados.contains(empleado)) {
+                todosLosEmpleados.add(empleado);
+                contadorPrestamos.add(1);
+            } else {
+                int indice = todosLosEmpleados.indexOf(empleado);
+                contadorPrestamos.set(indice, contadorPrestamos.get(indice) + 1);
+            }
+        }
+
+        for (Empleado empleado : todosLosEmpleados) {
+            int indice = todosLosEmpleados.indexOf(empleado);
+            int contador = contadorPrestamos.get(indice);
+            if (contador >= rangoEntero) {
+                reporte += empleado.toString() + " - Préstamos: " + contador + "\n";
+            }
+        }
+
+        return reporte;
 }
+
+
+
+
+}
+
 

@@ -202,4 +202,28 @@ public class ModelFactory {
     public String mostrarObjetosNoDisponibles() {
         return prestamoUQ.mostrarObjetosNoDisponibles();
     }
+
+    public String buscarClienteCedula(String cedula) {
+        return prestamoUQ.buscarClienteCedula(cedula);
+    }
+
+    public String obtenerObjetosMenosPrestados(String rango) {
+        return  prestamoUQ.obtenerObjetosMenosPrestados(rango);
+    }
+
+    public String obtenerPrestamosFechaEspecifica(LocalDate fechaEspecifica) {
+        return prestamoUQ.obtenerPrestamosFechaEspecifica(fechaEspecifica);
+    }
+
+    public String obtenerPrestamosEntreFechas(LocalDate fechaInicial, LocalDate fechaFinal) {
+        return prestamoUQ.obtenerPrestamosEntreFechas(fechaInicial, fechaFinal);
+    }
+
+    public String obtenerPrestamosMenoresFecha(LocalDate fechaEspecifica) {
+        return prestamoUQ.obtenerPrestamosMenoresFecha(fechaEspecifica);
+    }
+
+    public String BuscarEmpleadosConMasPrestamos(String rango) {
+        return prestamoUQ.BuscarEmpleadosConMasPrestamos(rango);
+    }
 }
